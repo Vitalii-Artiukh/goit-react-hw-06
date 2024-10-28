@@ -1,21 +1,16 @@
-import { React, useId, useState } from 'react';
+import { React, useId } from 'react';
 import clsx from 'clsx';
 import css from './SearchBox.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../redux/filterSlice';
+import { changeFilter } from '../../redux/filtersSlice';
 
 const SearchBox = () => {
-  const users = useSelector(state => state.contacts.contacts);
   const filter = useSelector(state => state.filter.filter);
   const dispatch = useDispatch();
 
-  // const [toFilter, setToFilter] = useState('');
-
-  // const filteredContacts = users.filter(
-  //   cont =>
-  //     cont.name.toLowerCase().includes(filter.toLowerCase()) ||
-  //     cont.number.toLowerCase().includes(filter.toLowerCase())
-  // );
+  const selectNameFilter = value => {
+    dispatch(changeFilter(value));
+  };
 
   const searchName = useId();
 
@@ -28,7 +23,7 @@ const SearchBox = () => {
           type="text"
           id={searchName}
           value={filter}
-          onChange={event => dispatch(setFilter(event.target.value))}
+          onChange={event => selectNameFilter(event.target.value)}
         />
       </label>
     </div>

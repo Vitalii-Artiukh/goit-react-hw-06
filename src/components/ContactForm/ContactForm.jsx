@@ -18,17 +18,6 @@ const ContactForm = () => {
   const numberInputId = useId();
 
   const dispatch = useDispatch();
-  // const addNewContact = newContact => {
-  //   const contact = {
-  //     ...newContact,
-  //     id: nanoid(),
-  //   };
-  //   const action = addContact(contact);
-  //   dispatch(action);
-  //   // dispatch(addContact({ ...newContact, id: nanoid }));
-  //   // setContactItem(wCont => [...wCont, contact]);
-  //   // return;
-  // };
 
   const handleSubmit = (values, actions) => {
     const contact = {

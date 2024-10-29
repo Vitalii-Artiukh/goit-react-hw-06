@@ -5,12 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeFilter } from '../../redux/filtersSlice';
 
 const SearchBox = () => {
-  const filter = useSelector(state => state.filter.filter);
   const dispatch = useDispatch();
-
-  const selectNameFilter = value => {
-    dispatch(changeFilter(value));
-  };
 
   const searchName = useId();
 
@@ -22,8 +17,7 @@ const SearchBox = () => {
           className={clsx(css.input)}
           type="text"
           id={searchName}
-          value={filter}
-          onChange={event => selectNameFilter(event.target.value)}
+          onChange={event => dispatch(changeFilter(event.target.value))}
         />
       </label>
     </div>
